@@ -1,0 +1,27 @@
+{
+  "name": "gramjs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/gramjs",
+  "sourceRoot": "packages/gramjs/gramjs",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "script": "build --output=../../dist/packages/gramjs",
+        "outputPath": "dist/packages/gramjs"
+      }
+    }
+  } 
+}
+

@@ -123,6 +123,16 @@ npmi.on("close", (code) => {
       "utf8"
     );
 
+
+    const args = process.argv.slice(2);
+    let customOutput = null;
+
+    for (const arg of args) {
+      if (arg.startsWith("--output=")) {
+        customOutput = path.resolve(__dirname, arg.split("=")[1]);
+      }
+    }
+
     webpack(webpackConfig, (err, stats) => {
       if (err || stats.hasErrors()) {
         console.log("SOME ERROR HAPPENED");
@@ -133,6 +143,15 @@ npmi.on("close", (code) => {
       } else {
         exec("npm i");
       }
+      
+      if (customOutput) {
+        fs.rmSync(customOutput, { recursive: true, force: true });
+        fs.copyFolderSync(
+          path.resolve(__dirname, "browser"),
+          customOutput
+        );
+      }
+
       console.log(
         "DONE!. File created at ",
         path.resolve(__dirname, "browser/telegram.js")

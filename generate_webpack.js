@@ -146,9 +146,10 @@ npmi.on("close", (code) => {
       
       if (customOutput) {
         fs.rmSync(customOutput, { recursive: true, force: true });
-        fs.copyFolderSync(
+        fs.cpSync(
           path.resolve(__dirname, "browser"),
-          customOutput
+          customOutput,
+          { recursive: true }
         );
       }
 

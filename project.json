@@ -20,7 +20,13 @@
         "script": "build --output=../../dist/packages/gramjs",
         "outputPath": "dist/packages/gramjs"
       }
-    }
-  } 
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}",
+        "registry": "https://npm.pkg.github.com"
+      }
+    } 
+  }
 }
 

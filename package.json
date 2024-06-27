@@ -4,6 +4,7 @@
   "description": "NodeJS/Browser MTProto API Telegram client library,",
   "main": "index.js",
   "types": "index.d.ts",
+  "private": true,
   "scripts": {
     "test": "jest",
     "build": "node ./generate_webpack.js"
